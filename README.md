@@ -153,7 +153,7 @@ pip install -U git+https://github.com/NVIDIA/MinkowskiEngine -v --no-deps --inst
 # Or if you want local MinkowskiEngine
 git clone https://github.com/NVIDIA/MinkowskiEngine.git
 cd MinkowskiEngine
-python setup.py install --blas_include_dirs=${CONDA_PREFIX}/include --blas=openblas
+python setup.py install --blas_include_dirs=${CONDA_PREFIX}/include --blas=openblas --blas_library_dirs=${CONDA_PREFIX}/lib
 ```
 
 ### System Python

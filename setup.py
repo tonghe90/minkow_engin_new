@@ -139,7 +139,8 @@ BLAS, argv = _argparse("--blas", argv, False)
 BLAS_INCLUDE_DIRS, argv = _argparse("--blas_include_dirs", argv, False, is_list=True)
 BLAS_LIBRARY_DIRS, argv = _argparse("--blas_library_dirs", argv, False, is_list=True)
 MAX_COMPILATION_THREADS = 12
-
+if len(BLAS_LIBRARY_DIRS) == 1:
+    BLAS_LIBRARY_DIRS = BLAS_LIBRARY_DIRS[0]
 Extension = CUDAExtension
 extra_link_args = []
 include_dirs = []
@@ -191,7 +192,7 @@ if not (BLAS is False):  # False only when not set, str otherwise
     if not (BLAS_INCLUDE_DIRS is False):
         include_dirs += BLAS_INCLUDE_DIRS
     if not (BLAS_LIBRARY_DIRS is False):
-        extra_link_args += [f"-Wl,-rpath,{BLAS_LIBRARY_DIRS}"]
+        extra_link_args += [f"-L{BLAS_LIBRARY_DIRS}"]
 else:
     # find the default BLAS library
     import numpy.distutils.system_info as sysinfo
@@ -309,6 +310,7 @@ ext_modules = [
         sources=[*[str(SRC_PATH / src_file) for src_file in SRC_FILES], *BIND_FILES],
         extra_compile_args={"cxx": CC_FLAGS, "nvcc": NVCC_FLAGS},
         libraries=libraries,
+        extra_link_args=extra_link_args,
     ),
 ]
 
