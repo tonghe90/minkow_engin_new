@@ -298,6 +298,7 @@ ext_modules = [
 ]
 
 # Python interface
+print('#'*10, "{HERE}/MinkowskiEngine")
 setup(
     name="MinkowskiEngine",
     version=find_version("MinkowskiEngine", "__init__.py"),
