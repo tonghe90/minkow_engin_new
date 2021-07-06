@@ -82,6 +82,7 @@ if len(BLAS) > 0:
     BLAS = BLAS[0]
     argv.remove(BLAS)
     BLAS = BLAS.split('=')[1]
+    print('BLAS:',BLAS)
     assert BLAS in ['openblas', 'mkl', 'atlas', 'blas']
     libraries.append(BLAS)
     blas_inc_dirs = os.environ.get('BLAS_INCLUDE_DIRS')
