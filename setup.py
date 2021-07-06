@@ -298,7 +298,7 @@ ext_modules = [
 ]
 
 # Python interface
-print('#'*10, "{HERE}/MinkowskiEngine")
+print('#'*10,  "{}/MinkowskiEngine".format(HERE))
 setup(
     name="MinkowskiEngine",
     version=find_version("MinkowskiEngine", "__init__.py"),
