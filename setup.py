@@ -304,7 +304,7 @@ setup(
     version=find_version("MinkowskiEngine", "__init__.py"),
     install_requires=["torch", "numpy"],
     packages=["MinkowskiEngine", "MinkowskiEngine.utils", "MinkowskiEngine.modules"],
-    package_dir={"MinkowskiEngine": "{HERE}/MinkowskiEngine"},
+    package_dir={"MinkowskiEngine": "{}/MinkowskiEngine".format(HERE)},
     ext_modules=ext_modules,
     include_dirs=[str(SRC_PATH), str(SRC_PATH / "3rdparty"), *include_dirs],
     cmdclass={"build_ext": BuildExtension.with_options(use_ninja=True)},
