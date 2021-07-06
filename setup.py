@@ -289,7 +289,7 @@ NVCC_FLAGS += ARGS
 
 ext_modules = [
     Extension(
-        name="MinkowskiEngineBackend._C",
+        name="MinkowskiEngineBackend",
         sources=[*[str(SRC_PATH / src_file) for src_file in SRC_FILES], *BIND_FILES],
         extra_compile_args={"cxx": CC_FLAGS, "nvcc": NVCC_FLAGS},
         libraries=libraries,
@@ -303,7 +303,7 @@ setup(
     version=find_version("MinkowskiEngine", "__init__.py"),
     install_requires=["torch", "numpy"],
     packages=["MinkowskiEngine", "MinkowskiEngine.utils", "MinkowskiEngine.modules"],
-    package_dir={"MinkowskiEngine": "./MinkowskiEngine"},
+    package_dir={"MinkowskiEngine": "{HERE}/MinkowskiEngine"},
     ext_modules=ext_modules,
     include_dirs=[str(SRC_PATH), str(SRC_PATH / "3rdparty"), *include_dirs],
     cmdclass={"build_ext": BuildExtension.with_options(use_ninja=True)},
